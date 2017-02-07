@@ -1,0 +1,99 @@
+Before explaining function closures, there is a need to understand the concept of variables and their scope.
+
+Variable Scope:-A variable Scope tells that from where the variable can be accessed.Variable scope can be typed as local and 
+global scope.
+
+1.Local Variable:-The Variables that are defined inside the function are called as local variable and the scope of these variables are local
+that is these can only be accessible inside a function.
+
+For example:-
+
+function name(parameters){
+var a=10; //local varable
+
+code here;
+
+}
+
+so a is a local variable here.
+
+2.Global variable:-The variables that are defined in the main body of the program or outside the function and global variables can be accsesible 
+anywhere in the single program.
+
+For Example:-
+
+var i=0;
+function name(param){
+var a=i*2;
+}
+var b=i+2;
+
+
+So i is the global variable can be accessed anywhere in the program.
+
+
+Function Closures:-
+
+Closures are the inner function defined inside the function and has an access of:-
+1.Its own variables.
+2.Variable of Outer function.
+3.Global Variables.
+
+
+CLOSURE= FUNCTION(created by other function) + OUTER CONTEXT(variables which function relies on)
+
+
+Example:-
+
+function show(name, id) {
+var nameIntro = "Your name & id is ";
+    // this inner function has access to the outer function's variables, including the parameter?
+function showNameId () {        
+return nameIntro + name + " & " + id;    
+}
+
+?return showNameId ();
+}
+?
+show ("Hina", "100292288"); // Your name & id is Hina & 100292288
+
+Advantage of Using Closures:-
+
+As in purely object oriented languages we have the feature of making private methods, or variables.
+but here in javascript language(not purely object oriented languages) we can achieve private methods with closures.
+
+For Example-
+
+var count = (function() {
+  var privateCount = 0;   //private variable
+  function changeBy(val) {
+    privateCount += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  };   
+})();
+
+console.log(counter.value()); // logs 0
+counter.increment();
+counter.increment();
+console.log(counter.value()); // logs 2
+
+Not to Use Closures in loops:-The problem is that the variable i, within each of your anonymous functions, is bound
+to the same variable outside of the function.
+
+We don't have to make closures where they are not required as the excessive use of closures may affect the processing speed
+and memory consumption as well.
+
+Websites Used:-
+
+www.stackoverflow.com
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+https://www.sitepoint.com/javascript-closures-demystified/
+
+
